@@ -8,16 +8,16 @@
         <version>2.2.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from dao -->
     </parent>
-    <groupId>pet.petcage</groupId>
-    <artifactId>pet</artifactId>
+    <groupId>pet.photography</groupId>
+    <artifactId>photography</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>pet</name>
-    <description>Project for Spring Boot</description>
+    <name>photography</name>
+    <description>Project for Photography</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>1.11</java.version>
         <apache.httpclient.version>4.4.1</apache.httpclient.version>
     </properties>
 
@@ -48,7 +48,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
+            <version>1.18.16</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- spring boot 连接mysql依赖 -->
