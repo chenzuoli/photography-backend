@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>皮皮笼</title>
+    <style type="text/css">
+        body {
+            background-image: url("image/golder_retriever.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<style>
+    html, body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        text-align: center;
+    }
+
+    .wrap {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .header-nav {
+        width: 100%;
+        height: 60px;
+        background-color: white;
+    }
+
+    .logo {
+        width: 50px;
+        height: 60px;
+        float: left;
+        margin-left: 50px;
+    }
+
+    .qrcode {
+        width: 150px;
+        height: 30px;
+        margin-top: 20px;
+        float: left;
+        text-align: center;
+    }
+
+    .about {
+        width: 150px;
+        height: 30px;
+        float: left;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .content {
+        flex: 1;
+        /*height: 2000px;*/
+        /*overflow-y: scroll;*/
+        margin-top: 50px;
+        font-family: cursive;
+        color: white;
+    }
+
+    .qrcode span {
+        display: none;
+        text-decoration: none
+    }
+
+    .qrcode:hover {
+        cursor: pointer
+    }
+
+    .qrcode:hover span {
+        display: block;
+        position: absolute;
+        top: 60px;
+        color: #FFF;
+        z-index: 10;
+        background: #000;
+        filter: alpha(opacity=60);
+        -moz-opacity: 0.5;
+        opacity: 0.9;
+        width: 258px;
+        height: 258px;
+    }
+
+    .us {
+        margin-left: 80px;
+        text-align: left;
+        color: white;
+        font-family: cursive;
+    }
+
+    .us p {
+        text-align: center;
+    }
+
+</style>
+<body>
+
+
+<div class="wrap">
+    <div class="header-nav">
+        <div>
+            <img class="logo" src="image/logo.jpeg">
+        </div>
+        <div class="qrcode" style="margin-left: 50px;">
+            个人版
+            <span style="background:url(image/pipilong-customer.jpg);left: 175px;"></span>
+        </div>
+        <div class="qrcode">
+            商家版
+            <span style="background:url(image/pipilong-merchant.jpg);left: 325px;"></span>
+        </div>
+        <div class="about">
+            <a href="#aboutus">关于我们</a>
+        </div>
+        <div class="about">
+            <a href="http://pipilong.pet/blog.html">技术博客</a>
+        </div>
+    </div>
+    <div class="content">
+        <h2>皮皮笼，宠物寄存智能设备，让家人们放心出行</h2>
+    </div>
+</div>
+<div id="aboutus" class="us">
+    <br>
+    <h2>定位：一家以宠物智能硬件为核心的互联网公司</h2>
+    <h2>愿景：让宠物和谐生活在人类的世界中，让宠物给人类带来幸福生活</h2>
+    <h2>使命：连接用户与宠物，便利出行，创造美好生活</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>公司：上海电巴克宠物服务有限公司</p>
+    <p>联系人：白先生</p>
+    <p>联系电话：13439386559</p>
+    <p>邮箱：bailu@petcage.pet</p>
+    <p>地址：上海市奉贤区金碧路1990号1层</p>
+</div>
+</body>
+</html>
