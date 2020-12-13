@@ -155,8 +155,8 @@ create table if not exists competition(
     name varchar(255) comment '比赛名称',
     subject text comment '比赛主题',
     condition text comment '比赛条件',
-    start_date datetime comment '比赛开始时间',
-    end_date datetime comment '比赛结束时间',
+    start_date varchar(10) comment '比赛开始时间',
+    end_date varchar(10) comment '比赛结束时间',
     create_time timestamp default current_timestamp comment '创建时间',
     update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
 ) comment '比赛场次表' default charset='utf8'

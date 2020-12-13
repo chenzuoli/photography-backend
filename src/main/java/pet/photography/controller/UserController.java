@@ -67,8 +67,8 @@ public class UserController {
         }
     }
 
-    private int updateUserToken(String phone, String token) {
-        return userService.updateUserToken(phone, token);
+    private void updateUserToken(String phone, String token) {
+        userService.updateUserToken(phone, token);
     }
 
     /**

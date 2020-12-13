@@ -7,7 +7,9 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by user chenzuoli on 2020-12-12 21:54
@@ -18,8 +20,9 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @ToString
 @Entity
+@IdClass(Vote.class)
 @Table(name = "vote", schema = "photography")
-public class Vote {
+public class Vote implements Serializable {
     @Id
     private String competition_id;
     private String phone;
