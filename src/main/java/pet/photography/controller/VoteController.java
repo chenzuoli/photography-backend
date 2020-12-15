@@ -9,6 +9,8 @@ import pet.photography.dto.ResultDTO;
 import pet.photography.entity.Vote;
 import pet.photography.service.VoteService;
 
+import java.util.List;
+
 /**
  * Created by user chenzuoli on 2020/12/13 08:25
  * description:
@@ -42,5 +44,11 @@ public class VoteController {
                              @RequestParam("open_id") String open_id) {
         Vote vote = voteService.getVote(competition_id, open_id);
         return vote != null ? ResultDTO.ok(vote) : ResultDTO.fail("未找到");
+    }
+
+    @RequestMapping(value = "/get_votes", method = RequestMethod.GET)
+    public ResultDTO getVotes(@RequestParam("competition_id") String competition_id) {
+        List<Vote> votes = voteService.getVotes(competition_id);
+        return votes.size() != 0 ? ResultDTO.ok(votes) : ResultDTO.fail("未找到");
     }
 }

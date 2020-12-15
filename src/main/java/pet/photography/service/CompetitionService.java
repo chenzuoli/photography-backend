@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pet.photography.dao.CompetitionRepository;
 import pet.photography.entity.Competition;
 
+import java.util.List;
+
 /**
  * Created by user chenzuoli on 2020/12/13 07:39
  * description: 比赛服务
@@ -36,5 +38,9 @@ public class CompetitionService {
 
     public Competition getCompetition(String competition_id) {
         return competitionRepository.getCompetition(competition_id);
+    }
+
+    public List<Competition> getCompetitions() {
+        return competitionRepository.getCompetitions();
     }
 }

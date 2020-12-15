@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import pet.photography.entity.Vote;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by user chenzuoli on 2020/12/12 22:43
@@ -24,5 +25,8 @@ public interface VoteRepository extends JpaRepository<Vote, String> {
 
     @Query(value = "select * from vote where competition_id = ?1 and open_id = ?2", nativeQuery = true)
     Vote getVote(String competition_id, String open_id);
+
+    @Query(value = "select * from vote where competition_id = ?1", nativeQuery = true)
+    List<Vote> getVotes(String competition_id);
 
 }

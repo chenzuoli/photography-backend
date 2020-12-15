@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pet.photography.dao.VoteRepository;
 import pet.photography.entity.Vote;
 
+import java.util.List;
+
 /**
  * Created by user chenzuoli on 2020/12/13 07:47
  * description: 投票服务
@@ -24,5 +26,9 @@ public class VoteService {
 
     public Vote getVote(String competition_id, String open_id) {
         return voteRepository.getVote(competition_id, open_id);
+    }
+
+    public List<Vote> getVotes(String competition_id) {
+        return voteRepository.getVotes(competition_id);
     }
 }

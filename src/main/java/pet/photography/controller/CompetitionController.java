@@ -9,6 +9,7 @@ import pet.photography.dto.ResultDTO;
 import pet.photography.entity.Competition;
 import pet.photography.service.CompetitionService;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -67,5 +68,11 @@ public class CompetitionController {
     public ResultDTO getCompetition(@RequestParam("competition_id") String competition_id) {
         Competition competition = competitionService.getCompetition(competition_id);
         return competition != null ? ResultDTO.ok(competition) : ResultDTO.fail("未找到");
+    }
+
+    @RequestMapping(value = "/get_competitions", method = RequestMethod.GET)
+    public ResultDTO getCompetitions() {
+        List<Competition> competitions = competitionService.getCompetitions();
+        return competitions.size() != 0 ? ResultDTO.ok(competitions) : ResultDTO.fail("未找到");
     }
 }

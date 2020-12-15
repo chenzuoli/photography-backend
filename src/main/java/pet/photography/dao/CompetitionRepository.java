@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import pet.photography.entity.Competition;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by user chenzuoli on 2020/12/12 22:06
@@ -39,5 +40,8 @@ public interface CompetitionRepository extends JpaRepository<Competition, String
 
     @Query(value = "select * from competition where competition_id = ?1", nativeQuery = true)
     Competition getCompetition(String competition_id);
+
+    @Query(value = "select * from competition", nativeQuery = true)
+    List<Competition> getCompetitions();
 
 }

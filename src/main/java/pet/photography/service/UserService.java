@@ -102,9 +102,9 @@ public class UserService extends BaseService<User> {
         return repo.getUserByToken(token);
     }
 
-    public int updateUserToken(String phone, String token) {
+    public void updateUserToken(String phone, String token) {
         System.out.println("update user token: " + phone + "," + token);
-        return repo.updateUserToken(phone, token);
+        repo.updateUserToken(phone, token);
     }
 
     public int updateUserInfo(String avatar_url, String nick_name, String gender, String phone, String province, String city, String open_id) {

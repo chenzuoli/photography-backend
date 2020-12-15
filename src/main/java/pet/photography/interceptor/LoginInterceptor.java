@@ -31,7 +31,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String url = request.getRequestURI();
 
         //允许login地址无需登陆即可访问
-        if (url.indexOf("/photography/login") >= 0) {
+        if (url.contains("/photography/login")) {
             return true;
         }
 
