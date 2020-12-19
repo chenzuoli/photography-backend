@@ -15,8 +15,8 @@ import java.util.List;
 public interface VoteRepository extends JpaRepository<Vote, String> {
     @Transactional
     @Modifying
-    @Query(value = "insert into vote(competition_id, phone, open_id, image_url, subject, nick_name) values(?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
-    int addPhoto(String competition_id, String phone, String open_id, String image_url, String subject, String nick_name);
+    @Query(value = "insert into vote(competition_id, phone, open_id, url, type, subject, nick_name) values(?1, ?2, ?3, ?4, ?5, ?6, ?7)", nativeQuery = true)
+    int addPhoto(String competition_id, String phone, String open_id, String url, String type, String subject, String nick_name);
 
     @Transactional
     @Modifying

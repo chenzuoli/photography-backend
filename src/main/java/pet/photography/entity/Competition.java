@@ -24,6 +24,7 @@ public class Competition {
     private String competition_id;
     private String name;
     private String subject;
+    private String img_url;
     private String condition;
     private String start_date;
     private String end_date;

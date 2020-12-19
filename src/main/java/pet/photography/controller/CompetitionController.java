@@ -24,11 +24,12 @@ public class CompetitionController {
     @RequestMapping(value = "/add_competition", method = RequestMethod.POST)
     public ResultDTO addCompetition(@RequestParam("name") String name,
                                     @RequestParam("subject") String subject,
+                                    @RequestParam("img_url") String img_url,
                                     @RequestParam("condition") String condition,
                                     @RequestParam("start_date") String start_date,
                                     @RequestParam("end_date") String end_date) {
         UUID competition_id = UUID.randomUUID();
-        int result = competitionService.addCompetition(competition_id.toString(), name, subject, condition, start_date, end_date);
+        int result = competitionService.addCompetition(competition_id.toString(), name, subject, img_url, condition, start_date, end_date);
         return result > 0 ? ResultDTO.ok("插入成功") : ResultDTO.fail("插入失败");
     }
 
@@ -56,11 +57,12 @@ public class CompetitionController {
     @RequestMapping(value = "/update_competition", method = RequestMethod.POST)
     public ResultDTO updateCompetition(@RequestParam("name") String name,
                                        @RequestParam("subject") String subject,
+                                       @RequestParam("img_url") String img_url,
                                        @RequestParam("condition") String condition,
                                        @RequestParam("start_date") String start_date,
                                        @RequestParam("end_date") String end_date,
                                        @RequestParam("competition_id") String competition_id) {
-        int result = competitionService.updateCompetition(name, subject, condition, start_date, end_date, competition_id);
+        int result = competitionService.updateCompetition(name, subject, img_url, condition, start_date, end_date, competition_id);
         return result > 0 ? ResultDTO.ok("更新成功") : ResultDTO.fail("更新失败");
     }
 

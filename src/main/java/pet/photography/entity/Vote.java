@@ -28,7 +28,8 @@ public class Vote implements Serializable {
     private String phone;
     @Id
     private String open_id;
-    private String image_url;
+    private String url;
+    private String type;
     private String subject;
     private String nick_name;
     private int votes;

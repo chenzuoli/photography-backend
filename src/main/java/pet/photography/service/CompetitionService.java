@@ -16,8 +16,8 @@ public class CompetitionService {
     @Autowired
     CompetitionRepository competitionRepository;
 
-    public int addCompetition(String competition_id, String name, String subject, String condition, String start_date, String end_date) {
-        return competitionRepository.addCompetition(competition_id, name, subject, condition, start_date, end_date);
+    public int addCompetition(String competition_id, String name, String subject, String img_url, String condition, String start_date, String end_date) {
+        return competitionRepository.addCompetition(competition_id, name, subject, img_url, condition, start_date, end_date);
     }
 
     public int updateName(String name, String competition_id) {
@@ -32,8 +32,8 @@ public class CompetitionService {
         return competitionRepository.updateCondition(condition, competition_id);
     }
 
-    public int updateCompetition(String name, String subject, String condition, String start_date, String end_date, String competition_id) {
-        return competitionRepository.updateCompetition(name, subject, condition, start_date, end_date, competition_id);
+    public int updateCompetition(String name, String subject, String img_url, String condition, String start_date, String end_date, String competition_id) {
+        return competitionRepository.updateCompetition(name, subject, img_url, condition, start_date, end_date, competition_id);
     }
 
     public Competition getCompetition(String competition_id) {

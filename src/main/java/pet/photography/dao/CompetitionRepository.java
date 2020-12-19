@@ -15,8 +15,8 @@ import java.util.List;
 public interface CompetitionRepository extends JpaRepository<Competition, String> {
     @Transactional
     @Modifying()
-    @Query(value = "insert into competition (competition_id, name, subject, `condition`, start_date, end_date) values (?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
-    int addCompetition(String competition_id, String name, String subject, String condition, String start_date, String end_date);
+    @Query(value = "insert into competition (competition_id, name, subject, img_url, `condition`, start_date, end_date) values (?1, ?2, ?3, ?4, ?5, ?6, ?7)", nativeQuery = true)
+    int addCompetition(String competition_id, String name, String subject, String img_url, String condition, String start_date, String end_date);
 
     @Transactional
     @Modifying
@@ -35,8 +35,8 @@ public interface CompetitionRepository extends JpaRepository<Competition, String
 
     @Transactional
     @Modifying
-    @Query(value = "update competition set name = ?1, subject = ?2, `condition` = ?3, start_date = ?4, end_date = ?5 where competition_id = ?6", nativeQuery = true)
-    int updateCompetition(String name, String subject, String condition, String start_date, String end_date, String competition_id);
+    @Query(value = "update competition set name = ?1, subject = ?2, img_url = ?3, `condition` = ?4, start_date = ?5, end_date = ?6 where competition_id = ?7", nativeQuery = true)
+    int updateCompetition(String name, String subject, String img_url, String condition, String start_date, String end_date, String competition_id);
 
     @Query(value = "select * from competition where competition_id = ?1", nativeQuery = true)
     Competition getCompetition(String competition_id);
