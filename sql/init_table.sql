@@ -171,9 +171,9 @@ create table if not exists vote(
     type varchar(10) comment '作品类型（image/video）',
     subject varchar(255) comment '作品主题',
     nick_name varchar(255) comment '宠物昵称',
-    votes int comment '票数',
+    votes int default 0 comment '票数',
     create_time timestamp default current_timestamp comment '创建时间',
     update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间',
-    primary key(competition_id, open_id)
+--    primary key(competition_id, open_id)
 ) comment '作品投票表' default charset='utf8'
 ;

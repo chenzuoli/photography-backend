@@ -29,15 +29,16 @@ public class FileController {
         if (!file.isEmpty()) {
             System.out.println("success get the file.");
             String fileName = file.getOriginalFilename();
-            String path = null;
             String type = null;
-            type = fileName.contains(".") ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
+            if (fileName != null) {
+                type = fileName.contains(".") ? fileName.substring(fileName.lastIndexOf(".") + 1) : null;
+            }
             System.out.println("initialize file name as: " + fileName + ", type is: " + type);
             if (type != null) {
                 // 自定义的文件名称
                 String trueFileName = String.valueOf(System.currentTimeMillis()) + fileName;
                 // 设置存放图片文件的路径
-                path = constant.getAvatar_path() + "/" + trueFileName;
+                String path = constant.getAvatar_path() + "/" + trueFileName;
                 System.out.println("server local file path:" + path);
                 file.transferTo(new File(path));
                 System.out.println("success upload file to the server.");
