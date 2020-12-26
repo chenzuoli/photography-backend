@@ -173,7 +173,36 @@ create table if not exists vote(
     nick_name varchar(255) comment '宠物昵称',
     votes int default 0 comment '票数',
     create_time timestamp default current_timestamp comment '创建时间',
-    update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间',
+    update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
 --    primary key(competition_id, open_id)
 ) comment '作品投票表' default charset='utf8'
 ;
+
+create table if not exists photography(
+	id int primary key auto_increment comment '自增主键',
+    phone varchar(50) comment '参赛人手机号',
+    open_id varchar(100) comment '参赛人微信open_id',
+    url varchar(255) comment '参赛作品',
+    type varchar(10) comment '作品类型（image/video）',
+    subject varchar(255) comment '作品主题',
+    nick_name varchar(255) comment '宠物昵称',
+    photographer varchar(255) comment '作者昵称',
+    votes int default 0 comment '作品点赞量',
+    create_time timestamp default current_timestamp comment '创建时间',
+    update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
+) comment '摄影作品表' default charset='utf8'
+;
+
+create table if not exists comment(
+	id int primary key auto_increment comment '自增主键',
+	photography_id int comment '作品id',
+    open_id varchar(100) comment '评论人微信open_id',
+    comment_id int comment '评论id',
+    comment text comment '评论内容',
+    votes int default 0 comment '评论点赞量',
+    create_time timestamp default current_timestamp comment '创建时间',
+    update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
+) comment '评论表' default charset='utf8'
+;
+
+
