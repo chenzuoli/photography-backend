@@ -1,10 +1,12 @@
 package pet.photography.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pet.photography.entity.Photography;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -14,5 +16,10 @@ import java.util.List;
 @Repository
 public interface PhotographyRepository extends JpaRepository<Photography, String> {
     @Query(value = "select * from photography", nativeQuery = true)
-    List<Photography> get_photogrphies();
+    List<Photography> getPhotogrphies();
+
+    @Transactional
+    @Modifying
+    @Query(value = "insert into photography(open_id, url, type, subject, nick_name) values (?1, ?2, ?3, ?4, ?5)", nativeQuery = true)
+    int addPhotography(String open_id, String url, String type, String subject, String nick_name);
 }
