@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 /**
  * Created by user chenzuoli on 2020/4/5 18:57
@@ -38,6 +39,8 @@ public class AppInfoController {
     AppInfoService appInfoService;
     @Autowired
     UserService userService;
+
+    Logger logger = Logger.getLogger(AppInfoController.class.getName());
 
     /**
      * 小程序获取session_key openid
@@ -53,7 +56,28 @@ public class AppInfoController {
         params.put("js_code", js_code);
         params.put("grant_type", "authorization_code");
         String response = HttpUtil.sendPost(constant.getAccess_url(), params);
-        System.out.println("response: " + response);
+        logger.info("response: " + response);
+        SessionDTO sessionDTO = new SessionDTO();
+        try {
+            JSONObject jsonObject = JSONObject.parseObject(response);
+            sessionDTO.setOpen_id(jsonObject.getString("openid"));
+            sessionDTO.setSession_key(jsonObject.getString("session_key"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultDTO.fail("获取失败");
+        }
+        return ResultDTO.ok(sessionDTO);
+    }
+
+    @RequestMapping(value = "/tt_open_id", method = RequestMethod.GET)
+    public ResultDTO ttOpenId(@RequestParam("code") String code) {
+        String params = "";
+        params += "appid=" + constant.getTt_app_id();
+        params += "&secret=" + constant.getTt_app_secret();
+        params += "&code=" + code;
+        String request_url = constant.getTt_access_url() + "?" + params;
+        String response = HttpUtil.get(request_url);
+        logger.info("tt response: " + response);
         SessionDTO sessionDTO = new SessionDTO();
         try {
             JSONObject jsonObject = JSONObject.parseObject(response);

@@ -23,6 +23,10 @@ public class Constant {
     private String wx_app_secret; // wx secret
     private String access_url; // 微信获取session key，openid的url
     private String access_token_url; // 微信获取accessToken的url
+    private String tt_app_id; // 头条
+    private String tt_app_secret;
+    private String tt_access_url;
+    private String tt_access_token_url;
     private String sms_url; // 榛子短信url
     private String sms_app_id; // 榛子短信appid
     private String sms_app_secret; // 榛子短信secret
