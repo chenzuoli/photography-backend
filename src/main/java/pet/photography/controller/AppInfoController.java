@@ -41,6 +41,7 @@ public class AppInfoController {
     UserService userService;
 
     Logger logger = Logger.getLogger(AppInfoController.class.getName());
+    private String token;
 
     /**
      * 小程序获取session_key openid
@@ -142,6 +143,28 @@ public class AppInfoController {
 
         // 更新或者插入token，记录登录状态，下次客户端请求头携带token，后端拦截器做对比，存在即放行
         if (userService.getUserByOpenid(result.getString("openid")).size() == 0) {
+            userService.addUser(user);
+        } else {
+            userService.updateUser(user);
+        }
+        TokenDTO data = new TokenDTO();
+        data.setToken(token);
+        return ResultDTO.ok(data);
+    }
+
+    @RequestMapping(value = "/tt_login", method = RequestMethod.GET)
+    public ResultDTO ttLogin(LoginDTO loginDTO) {
+        logger.info(loginDTO.toString());
+        ResultDTO resultDTO = ttOpenId(loginDTO.getJs_code());
+        String token = UUID.randomUUID().toString();
+        User user = JSON.parseObject(loginDTO.getRawData(), User.class);
+        user.setToken(token);
+        SessionDTO sessionDTO = (SessionDTO) resultDTO.getData();
+        user.setOpen_id(sessionDTO.getOpen_id());
+        logger.info(user.toString());
+
+        // 更新或者插入token，记录登录状态，下次客户端请求头携带token，后端拦截器做对比，存在即放行
+        if (userService.getUserByOpenid(sessionDTO.getOpen_id()).size() == 0) {
             userService.addUser(user);
         } else {
             userService.updateUser(user);
