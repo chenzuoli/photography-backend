@@ -15,4 +15,7 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<Comment, String> {
     @Query(value = "select * from comment where photography_id = ?1", nativeQuery = true)
     List<Comment> get_comments(String photography_id);
+
+    @Query(value = "select * from comment where photography_id = ?1 and open_id = ?2", nativeQuery = true)
+    List<Comment> get_comment_by_id(String photography_id, String open_id);
 }

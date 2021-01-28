@@ -19,4 +19,8 @@ public class CommentService {
     public List<Comment> get_comments(String photography_id) {
         return commentRepository.get_comments(photography_id);
     }
+
+    public List<Comment> get_comment_by_id(String photography_id, String open_id) {
+        return commentRepository.get_comment_by_id(photography_id, open_id);
+    }
 }
