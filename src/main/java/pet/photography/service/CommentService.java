@@ -23,4 +23,16 @@ public class CommentService {
     public List<Comment> get_comment_by_id(String photography_id, String open_id) {
         return commentRepository.get_comment_by_id(photography_id, open_id);
     }
+
+    public int update_vote(boolean is_vote, String photography_id, String open_id) {
+        return commentRepository.update_vote(is_vote, photography_id, open_id);
+    }
+
+    public int comment(String photography_id, String open_id, long comment_id, String comment) {
+        return commentRepository.comment(photography_id, open_id, comment_id, comment);
+    }
+
+    public int delete_comment(long id) {
+        return commentRepository.delete_comment(id);
+    }
 }

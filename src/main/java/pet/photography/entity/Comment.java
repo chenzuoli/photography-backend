@@ -20,12 +20,12 @@ import javax.persistence.*;
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String photography_id;
     private String open_id;
-    private String comment_id;
+    private long comment_id;
     private String comment;
-    private int votes;
+    private boolean is_vote;
     private String create_time;
     private String update_time;
 }

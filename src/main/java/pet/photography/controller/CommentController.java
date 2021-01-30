@@ -26,9 +26,35 @@ public class CommentController {
         return ResultDTO.ok(comments);
     }
 
+    @RequestMapping(value = "/get_comment_by_id", method = RequestMethod.GET)
     public ResultDTO getComment(@RequestParam("photography_id") String photgraphy_id,
                                 @RequestParam("open_id") String open_id) {
         List<Comment> comment_by_id = commentService.get_comment_by_id(photgraphy_id, open_id);
         return ResultDTO.ok(comment_by_id);
     }
+
+    @RequestMapping(value = "/update_vote", method = RequestMethod.POST)
+    public ResultDTO updateVote(@RequestParam("is_vote") boolean is_vote,
+                                @RequestParam("photography_id") String photography_id,
+                                @RequestParam("open_id") String open_id) {
+        int result = commentService.update_vote(is_vote, photography_id, open_id);
+        return result > 0 ? ResultDTO.ok(result) : ResultDTO.fail("更新失败");
+    }
+
+    @RequestMapping(value = "/comment", method = RequestMethod.POST)
+    public ResultDTO comment(@RequestParam("photography_id") String photography_id,
+                             @RequestParam("open_id") String open_id,
+                             @RequestParam("comment_id") long comment_id,
+                             @RequestParam("comment") String comment) {
+        int result = commentService.comment(photography_id, open_id, comment_id, comment);
+        return result > 0 ? ResultDTO.ok(result) : ResultDTO.fail("评论失败");
+    }
+
+    @RequestMapping(value = "/delete_comment", method = RequestMethod.POST)
+    public ResultDTO deleteComment(@RequestParam("id") long id) {
+        int result = commentService.delete_comment(id);
+        return result > 0 ? ResultDTO.ok(result) : ResultDTO.fail("删除失败");
+    }
+
+
 }
