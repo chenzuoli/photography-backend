@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * 返回对象
@@ -69,6 +70,19 @@ public class UserController {
 
     private void updateUserToken(String phone, String token) {
         userService.updateUserToken(phone, token);
+    }
+
+    @RequestMapping(value = "/login_app", method = RequestMethod.POST)
+    public ResultDTO loginApp(@RequestParam String open_id, @RequestParam String pwd) {
+        boolean is_match = userService.appLoginCheck(open_id, pwd);
+        String token = UUID.randomUUID().toString();
+        if (is_match) {
+            // 更新用户token
+            userService.updateAppUserToken(open_id, token);
+            return ResultDTO.ok("登录成功");
+        } else {
+            return ResultDTO.fail("登录失败");
+        }
     }
 
     /**

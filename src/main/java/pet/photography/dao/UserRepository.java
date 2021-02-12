@@ -92,4 +92,11 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Query(value = "insert into user (open_id, pwd, token) values (?1, ?2, ?3)", nativeQuery = true)
     int registerApp(String open_id, String pwd, String token);
 
+    @Transactional
+    @Modifying
+    @Query(value = "update user set token = ?2 where open_id = ?1", nativeQuery = true)
+    int updateAppUserToken(String open_id, String token);
+
+    @Query(value = "select * from user where open_id = ?1 and pwd = ?2", nativeQuery = true)
+    List<User> appLoginCheck(String open_id, String pwd);
 }

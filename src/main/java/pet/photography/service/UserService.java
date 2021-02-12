@@ -33,6 +33,13 @@ public class UserService extends BaseService<User> {
         return users.size() != 0;
     }
 
+    public boolean appLoginCheck(String open_id, String pwd) {
+        logger.info("login check params: " + open_id + "," + pwd);
+        List<User> users = repo.appLoginCheck(open_id, pwd);
+        logger.info(users.toString());
+        return users.size() != 0;
+    }
+
     public int updatePass(String nick_name, String pwd, String phone) {
         String update_time = dateFormat.format(new Date(System.currentTimeMillis()));
         logger.info("update password params: " + nick_name + "," + pwd + "," + update_time + "," + phone);
@@ -121,4 +128,8 @@ public class UserService extends BaseService<User> {
         return repo.registerApp(open_id, pwd, token);
     }
 
+    public int updateAppUserToken(String open_id, String token) {
+        logger.info("update app user token: " + token + ", open_id: " + open_id);
+        return repo.updateAppUserToken(open_id, token);
+    }
 }

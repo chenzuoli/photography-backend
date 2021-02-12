@@ -27,7 +27,7 @@ public class WebConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // addPathPatterns("/**") 表示拦截所有的请求，
         // excludePathPatterns("/login", "/register") 表示除了登陆与注册之外，因为登陆注册不需要登陆也可以访问
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/wx_login", "/tt_login", "/register", "/register_app", "/sms_code", "/open_id", "/tt_open_id", "/get_competitions", "/get_votes", "/get_photographies", "/get_comments");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/wx_login", "/tt_login", "/login_app", "/register", "/register_app", "/sms_code", "/open_id", "/tt_open_id", "/get_competitions", "/get_votes", "/get_photographies", "/get_comments");
 //        super.addInterceptors(registry);    //较新Spring Boot的版本中这里可以直接去掉，否则会报错
     }
 }
