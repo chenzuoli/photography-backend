@@ -9,9 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @Service
 public class UserService extends BaseService<User> {
+
+    Logger logger = Logger.getLogger(UserService.class.getName());
 
     @Autowired
     UserRepository repo;
@@ -19,35 +22,35 @@ public class UserService extends BaseService<User> {
 
     @Override
     public User getById(String id) {
-        System.out.println("get user by id params: " + id);
+        logger.info("get user by id params: " + id);
         return repo.findUserByPhone(id);
     }
 
     public boolean loginCheck(String phone, String pwd) {
-        System.out.println("login check params: " + phone + "," + pwd);
+        logger.info("login check params: " + phone + "," + pwd);
         List<User> users = repo.loginCheck(phone, pwd);
-        System.out.println(users);
+        logger.info(users.toString());
         return users.size() != 0;
     }
 
     public int updatePass(String nick_name, String pwd, String phone) {
         String update_time = dateFormat.format(new Date(System.currentTimeMillis()));
-        System.out.println("update password params: " + nick_name + "," + pwd + "," + update_time + "," + phone);
+        logger.info("update password params: " + nick_name + "," + pwd + "," + update_time + "," + phone);
         return repo.updatePass(nick_name, pwd, update_time, phone);
     }
 
     public User getUserWallet(String open_id) {
-        System.out.println("get user wallet params: " + open_id);
+        logger.info("get user wallet params: " + open_id);
         return repo.getUserWallet(open_id);
     }
 
     public List<User> getUserByOpenid(String open_id) {
-        System.out.println("get user by open_id params: " + open_id);
+        logger.info("get user by open_id params: " + open_id);
         return repo.getUserByOpenid(open_id);
     }
 
     public int addUser(User user) {
-        System.out.println("add user parmas: " + user);
+        logger.info("add user parmas: " + user);
         return repo.addUser(
                 user.getPhone(),
                 user.getOpen_id(),
@@ -69,7 +72,7 @@ public class UserService extends BaseService<User> {
     }
 
     public int register(String phone, String pwd, String token) {
-        System.out.println("register params: " + phone + "," + pwd + "," + token);
+        logger.info("register params: " + phone + "," + pwd + "," + token);
         return repo.register(phone,
                 pwd,
                 "1",
@@ -80,7 +83,7 @@ public class UserService extends BaseService<User> {
     }
 
     public int updateUser(User user) {
-        System.out.println("update user params: " + user);
+        logger.info("update user params: " + user);
         String update_time = dateFormat.format(new Date(System.currentTimeMillis()));
         return repo.updateUser(
                 user.getUnion_id(),
@@ -98,18 +101,24 @@ public class UserService extends BaseService<User> {
     }
 
     public List<User> getUserByToken(String token) {
-        System.out.println("get user by token params: " + token);
+        logger.info("get user by token params: " + token);
         return repo.getUserByToken(token);
     }
 
     public void updateUserToken(String phone, String token) {
-        System.out.println("update user token: " + phone + "," + token);
+        logger.info("update user token: " + phone + "," + token);
         repo.updateUserToken(phone, token);
     }
 
     public int updateUserInfo(String avatar_url, String nick_name, String gender, String phone, String province, String city, String open_id) {
-        System.out.println("update user info: " + avatar_url + "," + nick_name + "," + gender + "," + phone + "," + province + "," + city + "," + open_id);
+        logger.info("update user info: " + avatar_url + "," + nick_name + "," + gender + "," + phone + "," + province + "," + city + "," + open_id);
         return repo.updateUserInfo(avatar_url, nick_name, gender, phone, province, city, open_id);
+    }
+
+    public int registerApp(String open_id, String pwd) {
+        logger.info("register app user account: " + open_id + ", pwd: " + pwd);
+        String token = UUID.randomUUID().toString();
+        return repo.registerApp(open_id, pwd, token);
     }
 
 }

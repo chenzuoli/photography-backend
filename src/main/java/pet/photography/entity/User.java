@@ -22,10 +22,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id; // 自增主键
     private String phone; // 手机号
-    private String open_id; // 用户小程序open_id
+    private String open_id; // 用户小程序open_id(业务主键)
     private String union_id; // 用户小程序union_id
     private String pwd; // 用户账号密码
-    private String user_type; // 用户类型(1普通会员,2周卡会员,3月卡会员,4季卡会员,5年卡会员)
+    private String user_type; // 用户类型()
     private String balance; // 余额
     private String valid_start_date; // 会员有效开始日期
     private String valid_end_date; // 会员有效结束日期

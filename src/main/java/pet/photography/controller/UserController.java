@@ -150,6 +150,18 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/register_app", method = RequestMethod.POST)
+    public ResultDTO registerApp(@RequestParam("open_id") String open_id,
+                                 @RequestParam("password") String password) {
+        List<User> users = userService.getUserByOpenid(open_id);
+        if (users.size() > 0) {
+            return ResultDTO.fail("该用户已存在");
+        } else {
+            int result = userService.registerApp(open_id, password);
+            return result > 0 ? ResultDTO.ok("注册成功") : ResultDTO.fail("注册失败");
+        }
+    }
+
     /**
      * 更新用户密码
      *
