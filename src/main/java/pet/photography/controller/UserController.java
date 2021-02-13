@@ -79,7 +79,7 @@ public class UserController {
         if (is_match) {
             // 更新用户token
             userService.updateAppUserToken(open_id, token);
-            return ResultDTO.ok("登录成功");
+            return ResultDTO.ok(token);
         } else {
             return ResultDTO.fail("登录失败");
         }
@@ -171,8 +171,8 @@ public class UserController {
         if (users.size() > 0) {
             return ResultDTO.fail("该用户已存在");
         } else {
-            int result = userService.registerApp(open_id, password);
-            return result > 0 ? ResultDTO.ok("注册成功") : ResultDTO.fail("注册失败");
+            String token = userService.registerApp(open_id, password);
+            return "注册失败".equals(token) ? ResultDTO.ok(token) : ResultDTO.fail("注册成功");
         }
     }
 

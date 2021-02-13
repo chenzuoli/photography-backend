@@ -122,10 +122,11 @@ public class UserService extends BaseService<User> {
         return repo.updateUserInfo(avatar_url, nick_name, gender, phone, province, city, open_id);
     }
 
-    public int registerApp(String open_id, String pwd) {
+    public String registerApp(String open_id, String pwd) {
         logger.info("register app user account: " + open_id + ", pwd: " + pwd);
         String token = UUID.randomUUID().toString();
-        return repo.registerApp(open_id, pwd, token);
+        int result = repo.registerApp(open_id, pwd, token);
+        return result > 0 ? token : "注册失败";
     }
 
     public int updateAppUserToken(String open_id, String token) {
