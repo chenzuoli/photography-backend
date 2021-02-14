@@ -275,4 +275,11 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/update_app_pass", method = RequestMethod.POST)
+    public ResultDTO updateAppUserPass(@RequestParam("open_id") String open_id,
+                                       @RequestParam("pwd") String pwd) {
+        int result = userService.updateAppUserPass(open_id, pwd);
+        return result > 0 ? ResultDTO.ok("更新密码成功") : ResultDTO.fail("更新密码失败");
+    }
+
 }

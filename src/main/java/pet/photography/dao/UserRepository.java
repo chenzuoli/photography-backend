@@ -46,7 +46,7 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Transactional
     @Modifying
-    @Query(value = "insert into user(phone, open_id, union_id, pwd, user_type, balance, valid_start_date, valid_end_date, token, country, province, city, avatar_url, gender, nick_name, `language`) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", nativeQuery = true)
+    @Query(value = "insert into user(phone, open_id, union_id, pwd, user_type, balance, valid_start_date, valid_end_date, token, country, province, city, avatar_url, gender, nick_name, `language`) values(?,?,?,password(?),?,?,?,?,?,?,?,?,?,?,?,?)", nativeQuery = true)
     int addUser(String phone,
                 String open_id,
                 String union_id,
@@ -89,7 +89,7 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Transactional
     @Modifying
-    @Query(value = "insert into user (open_id, pwd, token) values (?1, ?2, ?3)", nativeQuery = true)
+    @Query(value = "insert into user (open_id, pwd, token) values (?1, password(?2), ?3)", nativeQuery = true)
     int registerApp(String open_id, String pwd, String token);
 
     @Transactional
@@ -97,6 +97,11 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Query(value = "update user set token = ?2 where open_id = ?1", nativeQuery = true)
     int updateAppUserToken(String open_id, String token);
 
-    @Query(value = "select * from user where open_id = ?1 and pwd = ?2", nativeQuery = true)
+    @Query(value = "select * from user where open_id = ?1 and pwd = password(?2)", nativeQuery = true)
     List<User> appLoginCheck(String open_id, String pwd);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update user set pwd = password(?2) where open_id = ?1", nativeQuery = true)
+    int updateAppUserPass(String open_id, String pwd);
 }

@@ -133,4 +133,9 @@ public class UserService extends BaseService<User> {
         logger.info("update app user token: " + token + ", open_id: " + open_id);
         return repo.updateAppUserToken(open_id, token);
     }
+
+    public int updateAppUserPass(String open_id, String pwd) {
+        logger.info("update app user pwd: " + pwd + ", open_id: " + open_id);
+        return repo.updateAppUserPass(open_id, pwd);
+    }
 }
