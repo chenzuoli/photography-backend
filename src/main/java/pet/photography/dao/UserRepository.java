@@ -104,4 +104,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Modifying
     @Query(value = "update user set pwd = password(?2) where open_id = ?1", nativeQuery = true)
     int updateAppUserPass(String open_id, String pwd);
+
+    @Query(value = "select * from user where open_id = ?1 order by create_time desc limit 1", nativeQuery = true)
+    User getAppUser(String open_id);
 }

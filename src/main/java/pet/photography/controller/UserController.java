@@ -282,4 +282,10 @@ public class UserController {
         return result > 0 ? ResultDTO.ok("更新密码成功") : ResultDTO.fail("更新密码失败");
     }
 
+    @RequestMapping(value = "/get_app_user", method = RequestMethod.GET)
+    public ResultDTO getAppUser(@RequestParam("open_id") String open_id) {
+        User appUser = userService.getAppUser(open_id);
+        return appUser == null ? ResultDTO.fail("无此用户") : ResultDTO.ok(appUser);
+    }
+
 }
