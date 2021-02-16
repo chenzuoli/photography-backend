@@ -107,4 +107,10 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Query(value = "select * from user where open_id = ?1 order by create_time desc limit 1", nativeQuery = true)
     User getAppUser(String open_id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update user set nick_name = ?2 where open_id = ?1", nativeQuery = true)
+    int updateNickName(String open_id, String nick_name);
+
 }

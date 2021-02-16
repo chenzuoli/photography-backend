@@ -206,3 +206,12 @@ create table if not exists comment(
 ;
 
 
+
+create table if not exists feedback(
+	id bigint primary key auto_increment comment '自增主键',
+	open_id varchar(100) comment '反馈人open_id',
+	content text comment '反馈内容',
+    create_time timestamp default current_timestamp comment '创建时间',
+    update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
+) comment '反馈表' default charset='utf8'
+;

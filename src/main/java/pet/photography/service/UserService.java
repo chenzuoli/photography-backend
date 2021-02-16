@@ -143,4 +143,9 @@ public class UserService extends BaseService<User> {
         logger.info("get user by open_id: " + open_id);
         return repo.getAppUser(open_id);
     }
+
+    public int updateNickName(String open_id, String nick_name) {
+        logger.info("update nick_name params: " + open_id + ", " + nick_name);
+        return repo.updateNickName(open_id, nick_name);
+    }
 }

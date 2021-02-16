@@ -288,4 +288,11 @@ public class UserController {
         return appUser == null ? ResultDTO.fail("无此用户") : ResultDTO.ok(appUser);
     }
 
+    @RequestMapping(value = "/update_nick_name", method = RequestMethod.POST)
+    public ResultDTO updateNickName(@RequestParam("open_id") String open_id,
+                                    @RequestParam("nick_name") String nick_name) {
+        int result = userService.updateNickName(open_id, nick_name);
+        return result > 0 ? ResultDTO.ok("更新成功") : ResultDTO.fail("更新失败");
+    }
+
 }
