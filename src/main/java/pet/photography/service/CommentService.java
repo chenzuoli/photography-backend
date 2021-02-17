@@ -3,6 +3,7 @@ package pet.photography.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pet.photography.dao.CommentRepository;
+import pet.photography.dto.ResultDTO;
 import pet.photography.entity.Comment;
 
 import java.util.List;
@@ -26,6 +27,16 @@ public class CommentService {
 
     public int update_vote(boolean is_vote, String photography_id, String open_id) {
         return commentRepository.update_vote(is_vote, photography_id, open_id);
+    }
+
+    protected ResultDTO isLiked(String photography_id, String open_id) {
+        List<Comment> comments = commentRepository.comments(photography_id, open_id);
+        return comments.size() > 0 ? ResultDTO.ok(true) : ResultDTO.fail("不喜欢这个作品了");
+    }
+
+    public int addLike(boolean is_vote, String photography_id, String open_id) {
+        // 随便点赞喜欢，点赞过得，待会来还可以点赞，当然，处于当前页面时，可以取消点赞，而且只能点赞一次
+        return commentRepository.addLike(is_vote, photography_id, open_id);
     }
 
     public int comment(String photography_id, String open_id, long comment_id, String comment) {

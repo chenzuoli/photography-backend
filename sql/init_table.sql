@@ -197,7 +197,7 @@ create table if not exists comment(
 	id bigint primary key auto_increment comment '自增主键',
 	photography_id int comment '作品id',
     open_id varchar(100) comment '评论人微信open_id',
-    comment_id bigint comment '评论id',
+    comment_id bigint comment '评论id' default 0,
     comment text comment '评论内容',
     is_vote boolean default 0 comment '是否点赞了',
     create_time timestamp default current_timestamp comment '创建时间',

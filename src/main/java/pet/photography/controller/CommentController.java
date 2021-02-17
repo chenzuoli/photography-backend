@@ -38,7 +38,15 @@ public class CommentController {
                                 @RequestParam("photography_id") String photography_id,
                                 @RequestParam("open_id") String open_id) {
         int result = commentService.update_vote(is_vote, photography_id, open_id);
-        return result > 0 ? ResultDTO.ok(result) : ResultDTO.fail("更新失败");
+        return result > 0 ? ResultDTO.ok("更新成功") : ResultDTO.fail("更新失败");
+    }
+
+    @RequestMapping(value = "/add_like", method = RequestMethod.POST)
+    public ResultDTO addLike(@RequestParam("is_vote") boolean is_vote,
+                             @RequestParam("photography_id") String photography_id,
+                             @RequestParam("open_id") String open_id) {
+        int result = commentService.addLike(is_vote, photography_id, open_id);
+        return result > 0 ? ResultDTO.ok("喜欢成功") : ResultDTO.fail("主人出差错了，不让你喜欢了，呜呜呜...");
     }
 
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
@@ -47,13 +55,13 @@ public class CommentController {
                              @RequestParam("comment_id") long comment_id,
                              @RequestParam("comment") String comment) {
         int result = commentService.comment(photography_id, open_id, comment_id, comment);
-        return result > 0 ? ResultDTO.ok(result) : ResultDTO.fail("评论失败");
+        return result > 0 ? ResultDTO.ok("评论成功") : ResultDTO.fail("评论失败");
     }
 
     @RequestMapping(value = "/delete_comment", method = RequestMethod.POST)
     public ResultDTO deleteComment(@RequestParam("id") long id) {
         int result = commentService.delete_comment(id);
-        return result > 0 ? ResultDTO.ok(result) : ResultDTO.fail("删除失败");
+        return result > 0 ? ResultDTO.ok("删除成功") : ResultDTO.fail("删除失败");
     }
 
 
