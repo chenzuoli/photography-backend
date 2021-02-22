@@ -49,6 +49,15 @@ public class CommentController {
         return result > 0 ? ResultDTO.ok("喜欢成功") : ResultDTO.fail("主人出差错了，不让你喜欢了，呜呜呜...");
     }
 
+    @RequestMapping(value = "/add_comment_like", method = RequestMethod.POST)
+    public ResultDTO addCommentLike(@RequestParam("is_vote") boolean is_vote,
+                                    @RequestParam("photography_id") String photography_id,
+                                    @RequestParam("open_id") String open_id,
+                                    @RequestParam("comment_id") int comment_id) {
+        int result = commentService.addCommentLike(is_vote, photography_id, open_id, comment_id);
+        return result > 0 ? ResultDTO.ok("喜欢成功") : ResultDTO.fail("主人出差错了，不让你喜欢了，呜呜呜...");
+    }
+
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public ResultDTO comment(@RequestParam("photography_id") String photography_id,
                              @RequestParam("open_id") String open_id,

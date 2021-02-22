@@ -31,6 +31,11 @@ public interface CommentRepository extends JpaRepository<Comment, String> {
     @Query(value = "insert into comment (is_vote, photography_id, open_id) values (?1, ?2, ?3)", nativeQuery = true)
     int addLike(boolean is_vote, String photography_id, String open_id);
 
+    @Transactional
+    @Modifying
+    @Query(value = "insert into comment(is_vote, photography_id, open_id, comment_id) values (?1, ?2, ?3, ?4)", nativeQuery = true)
+    int addCommentLike(boolean is_vote, String photography_id, String open_id, int comment_id);
+
     @Query(value = "select * from comment where photography_id = ?1 and open_id = ?2", nativeQuery = true)
     List<Comment> comments(String photography_id, String open_id);
 

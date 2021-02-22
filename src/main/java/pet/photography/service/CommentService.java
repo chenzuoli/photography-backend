@@ -39,6 +39,10 @@ public class CommentService {
         return commentRepository.addLike(is_vote, photography_id, open_id);
     }
 
+    public int addCommentLike(boolean is_vote, String photography_id, String open_id, int comment_id) {
+        return commentRepository.addCommentLike(is_vote, photography_id, open_id, comment_id);
+    }
+
     public int comment(String photography_id, String open_id, long comment_id, String comment) {
         return commentRepository.comment(photography_id, open_id, comment_id, comment);
     }
