@@ -20,7 +20,7 @@ public class PhotographyService {
         return photographyRepository.getPhotogrphies();
     }
 
-    public int addPhotography(String open_id, String url, String type, String subject, String nick_name) {
-        return photographyRepository.addPhotography(open_id, url, type, subject, nick_name);
+    public int addPhotography(String open_id, String url, String type, String subject, String nick_name, String photographer) {
+        return photographyRepository.addPhotography(open_id, url, type, subject, nick_name, photographer);
     }
 }

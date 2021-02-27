@@ -172,7 +172,7 @@ public class UserController {
             return ResultDTO.fail("该用户已存在");
         } else {
             String token = userService.registerApp(open_id, password);
-            return "注册失败".equals(token) ? ResultDTO.ok(token) : ResultDTO.fail("注册成功");
+            return "注册失败".equals(token) ? ResultDTO.fail("注册失败") : ResultDTO.ok(token);
         }
     }
 

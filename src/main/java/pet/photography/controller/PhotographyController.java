@@ -31,8 +31,9 @@ public class PhotographyController {
                                     @RequestParam("url") String url,
                                     @RequestParam("type") String type,
                                     @RequestParam("subject") String subject,
-                                    @RequestParam("nick_name") String nick_name) {
-        int result = photographyService.addPhotography(open_id, url, type, subject, nick_name);
+                                    @RequestParam("nick_name") String nick_name,
+                                    @RequestParam("photographer") String photographer) {
+        int result = photographyService.addPhotography(open_id, url, type, subject, nick_name, photographer);
         return result > 0 ? ResultDTO.ok("添加成功") : ResultDTO.fail("添加失败");
     }
 }
