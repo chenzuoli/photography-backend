@@ -177,6 +177,27 @@ public class UserController {
     }
 
     /**
+     * 注册app用户，默认nick_name，avatar_url，不过依然从app传过来的
+     *
+     * @param open_id  用户id
+     * @param password 密码
+     * @return resultdto
+     */
+    @RequestMapping(value = "/register_app_user", method = RequestMethod.POST)
+    public ResultDTO registerAppUser(@RequestParam("open_id") String open_id,
+                                     @RequestParam("password") String password,
+                                     @RequestParam("nick_name") String nick_name,
+                                     @RequestParam("avatar_url") String avatar_url) {
+        List<User> users = userService.getUserByOpenid(open_id);
+        if (users.size() > 0) {
+            return ResultDTO.fail("该用户已存在");
+        } else {
+            String token = userService.registerAppUser(open_id, password, nick_name, avatar_url);
+            return "注册失败".equals(token) ? ResultDTO.fail("注册失败") : ResultDTO.ok(token);
+        }
+    }
+
+    /**
      * 更新用户密码
      *
      * @param nick_name   用户昵称

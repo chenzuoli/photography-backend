@@ -129,6 +129,13 @@ public class UserService extends BaseService<User> {
         return result > 0 ? token : "注册失败";
     }
 
+    public String registerAppUser(String open_id, String pwd, String nick_name, String avatar_url) {
+        logger.info("register app user account: " + open_id + ", pwd: " + pwd + ", nick_name: " + nick_name + ", avatar_url: " + avatar_url);
+        String token = UUID.randomUUID().toString();
+        int result = repo.registerAppUser(open_id, pwd, token, nick_name, avatar_url);
+        return result > 0 ? token : "注册失败";
+    }
+
     public int updateAppUserToken(String open_id, String token) {
         logger.info("update app user token: " + token + ", open_id: " + open_id);
         return repo.updateAppUserToken(open_id, token);
