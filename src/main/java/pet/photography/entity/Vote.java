@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -23,6 +20,8 @@ import java.io.Serializable;
 @IdClass(Vote.class)
 @Table(name = "vote", schema = "photography")
 public class Vote implements Serializable {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Id
     private String competition_id;
     private String phone;

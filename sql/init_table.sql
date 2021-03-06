@@ -164,6 +164,7 @@ create table if not exists competition(
 ;
 
 create table if not exists vote(
+    id int auto_increment,
     competition_id varchar(50) comment '比赛id',
     phone varchar(50) comment '参赛人手机号',
     open_id varchar(100) comment '参赛人微信open_id',
@@ -174,7 +175,7 @@ create table if not exists vote(
     votes int default 0 comment '票数',
     create_time timestamp default current_timestamp comment '创建时间',
     update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
---    primary key(competition_id, open_id)
+    primary key(competition_id, open_id)
 ) comment '作品投票表' default charset='utf8'
 ;
 
