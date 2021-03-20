@@ -47,7 +47,7 @@ public class PetApplication {
         tomcat.addAdditionalTomcatConnectors(connector);
 
         //解决请求中带[]{}等特殊字符的参数值
-        tomcat.addConnectorCustomizers((TomcatConnectorCustomizer) tomcat_connector -> tomcat_connector.setProperty("relaxedQueryChars", "|{}[]\\"));
+        tomcat.addConnectorCustomizers(tomcat_connector -> tomcat_connector.setProperty("relaxedQueryChars", "|{}[]\\"));
         return tomcat;
     }
 

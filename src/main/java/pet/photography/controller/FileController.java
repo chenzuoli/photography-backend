@@ -36,7 +36,7 @@ public class FileController {
             System.out.println("initialize file name as: " + fileName + ", type is: " + type);
             if (type != null) {
                 // 自定义的文件名称
-                String trueFileName = String.valueOf(System.currentTimeMillis()) + fileName;
+                String trueFileName = System.currentTimeMillis() + fileName;
                 // 设置存放图片文件的路径
                 String path = constant.getAvatar_path() + "/" + trueFileName;
                 System.out.println("server local file path:" + path);

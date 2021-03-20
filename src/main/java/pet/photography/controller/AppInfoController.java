@@ -201,7 +201,7 @@ public class AppInfoController {
             param.put("auto_color", true);
             MultiValueMap<String, String> headers = new LinkedMultiValueMap();
             HttpEntity requestEntity = new HttpEntity(param, headers);
-            ResponseEntity<byte[]> entity = rest.exchange(url, HttpMethod.POST, requestEntity, byte[].class, new Object[0]);
+            ResponseEntity<byte[]> entity = rest.exchange(url, HttpMethod.POST, requestEntity, byte[].class);
             byte[] result = entity.getBody();
             inputStream = new ByteArrayInputStream(result);
             String fileName = UUID.randomUUID().toString().trim().replaceAll("-", "") + ".png";
@@ -270,7 +270,7 @@ public class AppInfoController {
             System.out.println("url:" + url + ", params:" + param);
             MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
             HttpEntity requestEntity = new HttpEntity(param, headers);
-            ResponseEntity<byte[]> entity = rest.exchange(url, HttpMethod.POST, requestEntity, byte[].class, new Object[0]);
+            ResponseEntity<byte[]> entity = rest.exchange(url, HttpMethod.POST, requestEntity, byte[].class);
             System.out.println("get unlimited qr code response:" + entity.getBody());
             byte[] result = entity.getBody();
             System.out.println(Base64.encodeBase64String(result));
@@ -351,7 +351,7 @@ public class AppInfoController {
             System.out.println("调用生成微信URL接口传参:" + param);
             MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
             HttpEntity requestEntity = new HttpEntity(param, headers);
-            ResponseEntity<byte[]> entity = rest.exchange(url, HttpMethod.POST, requestEntity, byte[].class, new Object[0]);
+            ResponseEntity<byte[]> entity = rest.exchange(url, HttpMethod.POST, requestEntity, byte[].class);
             System.out.println("调用小程序生成微信永久小程序码URL接口返回结果:" + entity.getBody());
             byte[] result = entity.getBody();
             System.out.println(Base64.encodeBase64String(result));

@@ -43,4 +43,8 @@ public class CompetitionService {
     public List<Competition> getCompetitions() {
         return competitionRepository.getCompetitions();
     }
+
+    public Competition getLatestCompetition() {
+        return competitionRepository.getLatestCompetition();
+    }
 }

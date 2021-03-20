@@ -15,8 +15,8 @@ public enum CommonErrorCode implements IErrorCode {
     CODE_INVALID(1007, "验证码错误"),
     CODE_EXPIRED(1008, "验证码失效");
 
-    private Integer status;
-    private String message;
+    private final Integer status;
+    private final String message;
 
     CommonErrorCode(Integer code, String message) {
         this.status = code;

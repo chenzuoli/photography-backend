@@ -18,7 +18,7 @@ public class UserService extends BaseService<User> {
 
     @Autowired
     UserRepository repo;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public User getById(String id) {
