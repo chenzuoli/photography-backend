@@ -15,10 +15,10 @@ import java.util.List;
  */
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, String> {
-    @Query(value = "select * from comment where photography_id = ?1", nativeQuery = true)
+    @Query(value = "select * from comment where photography_id = ?1 order by create_time desc", nativeQuery = true)
     List<Comment> get_comments(String photography_id);
 
-    @Query(value = "select * from comment where photography_id = ?1 and open_id = ?2", nativeQuery = true)
+    @Query(value = "select * from comment where photography_id = ?1 and open_id = ?2 order by create_time desc", nativeQuery = true)
     List<Comment> get_comment_by_id(String photography_id, String open_id);
 
     @Transactional
@@ -36,7 +36,7 @@ public interface CommentRepository extends JpaRepository<Comment, String> {
     @Query(value = "insert into comment(is_vote, photography_id, open_id, comment_id) values (?1, ?2, ?3, ?4)", nativeQuery = true)
     int addCommentLike(boolean is_vote, String photography_id, String open_id, int comment_id);
 
-    @Query(value = "select * from comment where photography_id = ?1 and open_id = ?2", nativeQuery = true)
+    @Query(value = "select * from comment where photography_id = ?1 and open_id = ?2 order by create_time desc", nativeQuery = true)
     List<Comment> comments(String photography_id, String open_id);
 
     @Transactional

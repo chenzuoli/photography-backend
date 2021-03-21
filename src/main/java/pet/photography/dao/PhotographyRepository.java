@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Repository
 public interface PhotographyRepository extends JpaRepository<Photography, String> {
-    @Query(value = "select * from photography", nativeQuery = true)
+    @Query(value = "select * from photography order by create_time desc", nativeQuery = true)
     List<Photography> getPhotogrphies();
 
     @Transactional
