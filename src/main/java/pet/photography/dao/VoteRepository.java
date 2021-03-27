@@ -29,4 +29,15 @@ public interface VoteRepository extends JpaRepository<Vote, String> {
     @Query(value = "select * from vote where competition_id = ?1", nativeQuery = true)
     List<Vote> getVotes(String competition_id);
 
+    @Query(value = "select * from vote order by votes, create_time desc limit ?1", nativeQuery = true)
+    List<Vote> getPopularCompetitionWorks(int num);
+
+    @Query(value = "select * from vote where id = ?1", nativeQuery = true)
+    Vote getVote(int id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update vote set votes = ?2 where id = ?1", nativeQuery = true)
+    int updateVotes(int id, int votes);
+
 }

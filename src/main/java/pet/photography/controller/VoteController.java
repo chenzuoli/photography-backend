@@ -52,4 +52,25 @@ public class VoteController {
         List<Vote> votes = voteService.getVotes(competition_id);
         return votes.size() != 0 ? ResultDTO.ok(votes) : ResultDTO.fail("未找到");
     }
+
+    @RequestMapping(value = "/get_popular_competition_works", method = RequestMethod.GET)
+    public ResultDTO getPopularCompetitionWorks(@RequestParam("num") int num) {
+        List<Vote> popularCompetitionWorks = voteService.getPopularCompetitionWorks(num);
+        return popularCompetitionWorks.size() > 0 ? ResultDTO.ok(popularCompetitionWorks) : ResultDTO.fail("未找到");
+    }
+
+    @RequestMapping(value = "/get_vote_by_id", method = RequestMethod.GET)
+    public ResultDTO getVote(@RequestParam("id") int id) {
+        Vote vote = voteService.getVote(id);
+        return vote == null ? ResultDTO.fail("未找到") : ResultDTO.ok(vote);
+    }
+
+    @RequestMapping(value = "/update_votes", method = RequestMethod.POST)
+    public ResultDTO updateVotes(@RequestParam("id") int id,
+                                 @RequestParam("votes") int votes) {
+        int result = voteService.updateVotes(id, votes);
+        return result > 0 ? ResultDTO.ok("投票成功") : ResultDTO.fail("投票失败");
+    }
+
+    
 }

@@ -1,5 +1,6 @@
 package pet.photography.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pet.photography.dao.CompetitionRepository;
@@ -46,5 +47,14 @@ public class CompetitionService {
 
     public Competition getLatestCompetition() {
         return competitionRepository.getLatestCompetition();
+    }
+
+    public List<Competition> getLatestCompetition(int num) {
+        return competitionRepository.getLatestCompetition(num);
+    }
+
+    public List<Competition> getCompetitions(List<String> competition_ids) {
+        String ids = StringUtils.join(competition_ids, ',');
+        return competitionRepository.getCompetitions(ids);
     }
 }

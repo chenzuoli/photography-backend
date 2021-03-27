@@ -56,5 +56,5 @@ public interface CommentRepository extends JpaRepository<Comment, String> {
     int addVote(String competition_id, String open_id, boolean is_vote);
 
     @Query(value = "select competition_id from comment where competition_id != null group by competition_id order by count(1) desc limit 10", nativeQuery = true)
-    List<String> getPopularCompetitionWorks();
+    List<String> getPopularCompetition();
 }

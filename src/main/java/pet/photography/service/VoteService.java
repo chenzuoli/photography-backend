@@ -31,4 +31,16 @@ public class VoteService {
     public List<Vote> getVotes(String competition_id) {
         return voteRepository.getVotes(competition_id);
     }
+
+    public List<Vote> getPopularCompetitionWorks(int num) {
+        return voteRepository.getPopularCompetitionWorks(num);
+    }
+
+    public Vote getVote(int id) {
+        return voteRepository.getVote(id);
+    }
+
+    public int updateVotes(int id, int votes) {
+        return voteRepository.updateVotes(id, votes);
+    }
 }

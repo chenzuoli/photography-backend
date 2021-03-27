@@ -81,9 +81,9 @@ public class CommentController {
         return result > 0 ? ResultDTO.ok("喜欢成功") : ResultDTO.fail("主人出差错了，不让您喜欢了，呜呜呜...");
     }
 
-    @RequestMapping(value = "/get_popular_competition_works")
-    public ResultDTO getPopularCompetitionWorks() {
-        List<String> works = commentService.getPopularCompetitionWorks();
+    @RequestMapping(value = "/get_popular_competitions", method = RequestMethod.GET)
+    public ResultDTO getPopularCompetitions() {
+        List<String> works = commentService.getPopularCompetition();
         return works.size() > 0 ? ResultDTO.ok("获取成功") : ResultDTO.fail("列表为空");
     }
 

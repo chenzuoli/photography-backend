@@ -47,4 +47,10 @@ public interface CompetitionRepository extends JpaRepository<Competition, String
     @Query(value = "select * from competition order by create_time desc limit 1", nativeQuery = true)
     Competition getLatestCompetition();
 
+    @Query(value = "select * from competition order by create_time desc limit ?1", nativeQuery = true)
+    List<Competition> getLatestCompetition(int num);
+
+    @Query(value = "select * from competition where competition_id in (?1)", nativeQuery = true)
+    List<Competition> getCompetitions(String competition_ids);
+
 }

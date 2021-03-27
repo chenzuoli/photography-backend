@@ -55,7 +55,7 @@ public class CommentService {
         return commentRepository.addVote(competition_id, open_id, is_vote);
     }
 
-    public List<String> getPopularCompetitionWorks() {
-        return commentRepository.getPopularCompetitionWorks();
+    public List<String> getPopularCompetition() {
+        return commentRepository.getPopularCompetition();
     }
 }

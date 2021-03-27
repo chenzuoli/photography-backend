@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * Created by user chenzuoli on 2020-12-12 21:54
- * description: 投票类
+ * description: 投票类，一个比赛中一个人只能上传一个作品
  */
 @Data
 @NoArgsConstructor

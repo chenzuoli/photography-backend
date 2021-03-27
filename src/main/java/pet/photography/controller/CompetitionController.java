@@ -83,4 +83,16 @@ public class CompetitionController {
         Competition latestCompetition = competitionService.getLatestCompetition();
         return latestCompetition != null ? ResultDTO.ok(latestCompetition) : ResultDTO.fail("未找到");
     }
+
+    @RequestMapping(value = "/get_latest_competitions", method = RequestMethod.GET)
+    public ResultDTO getLatestCompetitions(@RequestParam("num") int num) {
+        List<Competition> latestCompetition = competitionService.getLatestCompetition(num);
+        return latestCompetition != null ? ResultDTO.ok(latestCompetition) : ResultDTO.fail("未找到");
+    }
+
+    @RequestMapping(value = "/get_competitions_by_ids", method = RequestMethod.GET)
+    public ResultDTO getCompetitions(@RequestParam("competition_ids") List<String> competition_ids) {
+        List<Competition> competitions = competitionService.getCompetitions(competition_ids);
+        return competitions.size() > 0 ? ResultDTO.ok(competitions) : ResultDTO.fail("未找到");
+    }
 }
