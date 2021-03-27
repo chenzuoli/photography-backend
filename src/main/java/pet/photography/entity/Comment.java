@@ -22,6 +22,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String photography_id;
+    private String competition_id;
     private String open_id;
     private long comment_id;
     private String comment;

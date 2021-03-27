@@ -55,7 +55,7 @@ public class CommentController {
                                     @RequestParam("open_id") String open_id,
                                     @RequestParam("comment_id") int comment_id) {
         int result = commentService.addCommentLike(is_vote, photography_id, open_id, comment_id);
-        return result > 0 ? ResultDTO.ok("喜欢成功") : ResultDTO.fail("主人出差错了，不让你喜欢了，呜呜呜...");
+        return result > 0 ? ResultDTO.ok("喜欢成功") : ResultDTO.fail("主人出差错了，不让您喜欢了，呜呜呜...");
     }
 
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
@@ -73,5 +73,18 @@ public class CommentController {
         return result > 0 ? ResultDTO.ok("删除成功") : ResultDTO.fail("删除失败");
     }
 
+    @RequestMapping(value = "/add_vote", method = RequestMethod.POST)
+    public ResultDTO addVote(@RequestParam("competition_id") String competition_id,
+                             @RequestParam("open_id") String open_id,
+                             @RequestParam("is_vote") boolean is_vote) {
+        int result = commentService.addVote(competition_id, open_id, is_vote);
+        return result > 0 ? ResultDTO.ok("喜欢成功") : ResultDTO.fail("主人出差错了，不让您喜欢了，呜呜呜...");
+    }
+
+    @RequestMapping(value = "/get_popular_competition_works")
+    public ResultDTO getPopularCompetitionWorks() {
+        List<String> works = commentService.getPopularCompetitionWorks();
+        return works.size() > 0 ? ResultDTO.ok("获取成功") : ResultDTO.fail("列表为空");
+    }
 
 }

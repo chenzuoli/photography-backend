@@ -49,4 +49,12 @@ public interface CommentRepository extends JpaRepository<Comment, String> {
     @Modifying
     @Query(value = "delete from comment where id = ?1", nativeQuery = true)
     int delete_comment(long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "insert into comment(competition_id, open_id, is_vote) values (?1, ?2, ?3)", nativeQuery = true)
+    int addVote(String competition_id, String open_id, boolean is_vote);
+
+    @Query(value = "select competition_id from comment where competition_id != null group by competition_id order by count(1) desc limit 10", nativeQuery = true)
+    List<String> getPopularCompetitionWorks();
 }

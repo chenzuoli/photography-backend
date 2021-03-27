@@ -197,6 +197,7 @@ create table if not exists photography(
 create table if not exists comment(
 	id bigint primary key auto_increment comment '自增主键',
 	photography_id int comment '作品id',
+	competition_id varchar(50) comment "参赛作品id",
     open_id varchar(100) comment '评论人微信open_id',
     comment_id bigint comment '评论id' default 0,
     comment text comment '评论内容',

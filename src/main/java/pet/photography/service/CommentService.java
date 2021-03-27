@@ -50,4 +50,12 @@ public class CommentService {
     public int delete_comment(long id) {
         return commentRepository.delete_comment(id);
     }
+
+    public int addVote(String competition_id, String open_id, boolean is_vote) {
+        return commentRepository.addVote(competition_id, open_id, is_vote);
+    }
+
+    public List<String> getPopularCompetitionWorks() {
+        return commentRepository.getPopularCompetitionWorks();
+    }
 }
