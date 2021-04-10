@@ -43,4 +43,8 @@ public class VoteService {
     public int updateVotes(int id, int votes) {
         return voteRepository.updateVotes(id, votes);
     }
+
+    public List<Vote> checkVote(String competition_id, String open_id) {
+        return voteRepository.checkVote(competition_id, open_id);
+    }
 }

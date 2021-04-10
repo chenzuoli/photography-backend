@@ -283,13 +283,15 @@ CREATE TABLE `vote` (
   `open_id` varchar(100) NOT NULL COMMENT '参赛人微信open_id',
   `subject` varchar(255) DEFAULT NULL COMMENT '作品主题',
   `nick_name` varchar(255) DEFAULT NULL COMMENT '宠物昵称',
-  `votes` int(11) DEFAULT NULL COMMENT '票数',
+  `votes` int(11) DEFAULT '0' COMMENT '票数',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `type` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
-  PRIMARY KEY (`competition_id`,`open_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='作品投票表';
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增',
+  PRIMARY KEY (`competition_id`,`open_id`),
+  UNIQUE KEY `new_uk_name` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='作品投票表'
 
 -- ----------------------------
 -- Records of vote

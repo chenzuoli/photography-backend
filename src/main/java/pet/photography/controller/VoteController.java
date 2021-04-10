@@ -72,5 +72,12 @@ public class VoteController {
         return result > 0 ? ResultDTO.ok("投票成功") : ResultDTO.fail("投票失败");
     }
 
+    @RequestMapping(value = "/check_vote", method = RequestMethod.GET)
+    public ResultDTO checkVote(@RequestParam("competition_id") String competition_id,
+                               @RequestParam("open_id") String open_id) {
+        List<Vote> votes = voteService.checkVote(competition_id, open_id);
+        return votes.size() == 0 ? ResultDTO.ok("未参赛") : ResultDTO.fail("对不起，您已参赛。");
+    }
+
     
 }
