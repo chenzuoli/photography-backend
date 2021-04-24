@@ -29,7 +29,7 @@ public class VoteController {
                               @RequestParam("subject") String subject,
                               @RequestParam("nick_name") String nick_name) {
         int result = voteService.addPhoto(competition_id, phone, open_id, url, type, subject, nick_name);
-        return result > 0 ? ResultDTO.ok("插入成功") : ResultDTO.fail("插入失败");
+        return result > 0 ? ResultDTO.ok("添加成功") : ResultDTO.fail("添加失败");
     }
 
     @RequestMapping(value = "/vote", method = RequestMethod.POST)
