@@ -12,11 +12,35 @@
     <!-- 首页样式 -->
     <link href="css/index.css" rel="stylesheet">
     <link href="css/body.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
 </head>
 <body>
+
 <!-- header顶部导航 -->
 <header>
     <div class="header-container">
+        <div class="sidebar">
+            <ul>
+                <li><a class="ion-social-apple" href="https://www.apple.com/cn/shop/buy-mac/macbook-pro/MV912CH/A#"></a>
+                </li>
+                <li><a class="ion-ios-game-controller-b" href="http://www.4399.com/"></a></li>
+                <li><a class="ion-social-twitter" href="https://weibo.com/cctvxinwen?topnav=1&wvr=6&topsug=1"></a></li>
+                <li><a class="ion-social-youtube" href="https://www.bilibili.com"></a></li>
+                <li><a class="ion-ios-basketball" href="https://sports.qq.com/nba/"></a></li>
+                <li><a class="ion-social-rss" href="https://www.cnblogs.com/Dominic-Ji/"></a></li>
+                <li><a class="ion-social-github" href="https://github.com/jackfrued/Python-100-Days"></a></li>
+                <li><a class="ion-music-note" href="https://music.163.com/#/song?id=287035"></a></li>
+            </ul>
+        </div>
+<!--        <a class="btn"></a>-->
+        <script type="text/javascript">
+        $('.btn').on('click',function () {
+            $('.btn').toggleClass('btnc');
+            $('.sidebar').toggleClass('side');
+        })
+        </script>
         <div class="nav-box">
             <div>
                 <img class="logo" src="img/pet/next_door_logo.png">
@@ -38,9 +62,6 @@
         </div>
     </div>
 </header>
-<!--    <div class="content">-->
-<!--        <h4>邻家宠物，邻家帮你，安全放心，优惠而有温度</h4>-->
-<!--    </div>-->
 <!-- banner轮播组件 -->
 <div class="banner">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
@@ -80,6 +101,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
 </div>
 <!--</div>-->
 <!-- feature1内容 -->
