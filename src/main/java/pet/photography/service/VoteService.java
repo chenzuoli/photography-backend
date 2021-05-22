@@ -16,8 +16,8 @@ public class VoteService {
     @Autowired
     VoteRepository voteRepository;
 
-    public int addPhoto(String competition_id, String phone, String open_id, String url, String type, String subject, String nick_name, String tag) {
-        return voteRepository.addPhoto(competition_id, phone, open_id, url, type, subject, nick_name, tag);
+    public int addPhoto(String competition_id, String phone, String open_id, String url, String type, String subject, String nick_name, String tag_id) {
+        return voteRepository.addPhoto(competition_id, phone, open_id, url, type, subject, nick_name, tag_id);
     }
 
     public int vote(int votes, String competition_id, String open_id) {
