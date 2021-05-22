@@ -22,6 +22,11 @@ create table if not exists user(
     update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
 ) comment '用户表' default charset='utf8'
 ;
+
+alter table user add column tag_id varchar(200) default null  comment '标签' after token;
+alter table user add column community varchar(255) default null comment '小区' after token;
+
+
 INSERT INTO `petcage`.`user`(`id`, `phone`, `open_id`, `union_id`, `pwd`, `user_type`, `balance`, `valid_start_date`, `valid_end_date`, `token`, `country`, `province`, `city`, `avatar_url`, `gender`, `nick_name`, `language`, `birthday`, `create_time`, `update_time`) VALUES (1, NULL, 'ouHZt5bOQUAFi3C8rqDXC_dgCDvI', NULL, '3254316d-62a3-4298-962c-adc2f61204a7', '1', 0, '2020-03-30 00:01:32', '3000-12-31 00:00:00', '69992092-c017-4473-a52f-7c6ff7c24235', '', '', '', 'https://wx.qlogo.cn/mmopen/vi_32/VBoVXlHjV7ooww4icozNUQkohOp304JWEx7Qaeb97JvicMaibgwCbxiaYbceib1XIoT1yFWdOTeIYnzE45cibxp9aEtA/132', '1', '你好世界1124', 'en', NULL, '2020-03-30 00:01:32', NULL);
 INSERT INTO `petcage`.`user`(`id`, `phone`, `open_id`, `union_id`, `pwd`, `user_type`, `balance`, `valid_start_date`, `valid_end_date`, `token`, `country`, `province`, `city`, `avatar_url`, `gender`, `nick_name`, `language`, `birthday`, `create_time`, `update_time`) VALUES (2, NULL, 'ouHZt5Wh0Hfkoc1S1JArPO3D7TvU', NULL, '85ade7c2-784f-47aa-9a49-1f559385ed92', '1', 0, '2020-04-06 23:09:01', '3000-12-31 00:00:00', '3fec2ed2-225a-42e2-a90b-c75ef24c6d8e', 'JP', 'Chiba-ken', 'Abiko-shi', 'https://wx.qlogo.cn/mmopen/vi_32/TPibPtjPTictqCuriaKicG4TvRib8r3PUAQ9F4VEOm3hcSd6JZ4dJsAdG0CZ1W26qDPL4DOGTq9mR0VxQAiax61AS6vg/132', '1', '㍿', 'zh_CN', NULL, '2020-04-06 23:09:01', NULL);
 INSERT INTO `petcage`.`user`(`id`, `phone`, `open_id`, `union_id`, `pwd`, `user_type`, `balance`, `valid_start_date`, `valid_end_date`, `token`, `country`, `province`, `city`, `avatar_url`, `gender`, `nick_name`, `language`, `birthday`, `create_time`, `update_time`) VALUES (3, NULL, 'ouHZt5Ym2TBwU8KCMbX4cBp3PMTw', NULL, 'bebc0ebb-24cf-436b-ab30-832e33e18193', '1', 0, '2020-04-10 08:11:30', '3000-12-31 00:00:00', 'a7083074-dd19-423b-a855-3f07b0b95d9e', '中国', '', '', 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqrIhRibyIhAddEKt2r1b9AtX8xtUDlLibyeu4jVde8EXZwGKHnIz5j1OG7QiccNIf1d2yTUAQ9nENsQ/132', '1', '小板的八块腹肌', 'zh_CN', NULL, '2020-04-10 08:11:30', NULL);
@@ -178,6 +183,8 @@ create table if not exists vote(
     primary key(competition_id, open_id)
 ) comment '作品投票表' default charset='utf8'
 ;
+alter table vote add column tag_id varchar(200) default null  comment '标签' after votes;
+
 
 create table if not exists photography(
 	id int primary key auto_increment comment '自增主键',
@@ -193,6 +200,8 @@ create table if not exists photography(
     update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
 ) comment '摄影作品表' default charset='utf8'
 ;
+alter table photography add column tag_id varchar(200) default null  comment '标签' after votes;
+
 
 create table if not exists comment(
 	id bigint primary key auto_increment comment '自增主键',
@@ -216,4 +225,14 @@ create table if not exists feedback(
     create_time timestamp default current_timestamp comment '创建时间',
     update_time timestamp not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
 ) comment '反馈表' default charset='utf8'
+;
+
+
+create table if not exists tags(
+    id bigint primary key auto_increment comment "自增主键",
+    tag_id varchar(100) comment "标签key",
+    tag_name varchar(100) comment "tag名称",
+    create_time timestamp default current_timestamp comment '创建时间',
+    update_time timestamp not null default current_timestamp on update current_timestamp comment '更新时间'
+) comment '标签表' default charset='utf8'
 ;

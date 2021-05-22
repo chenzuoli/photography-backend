@@ -27,8 +27,9 @@ public class VoteController {
                               @RequestParam("url") String url,
                               @RequestParam("type") String type,
                               @RequestParam("subject") String subject,
-                              @RequestParam("nick_name") String nick_name) {
-        int result = voteService.addPhoto(competition_id, phone, open_id, url, type, subject, nick_name);
+                              @RequestParam("nick_name") String nick_name,
+                              @RequestParam("tag") String tag) {
+        int result = voteService.addPhoto(competition_id, phone, open_id, url, type, subject, nick_name, tag);
         return result > 0 ? ResultDTO.ok("添加成功") : ResultDTO.fail("添加失败");
     }
 

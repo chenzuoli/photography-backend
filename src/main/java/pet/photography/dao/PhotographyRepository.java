@@ -20,6 +20,6 @@ public interface PhotographyRepository extends JpaRepository<Photography, String
 
     @Transactional
     @Modifying
-    @Query(value = "insert into photography(open_id, url, type, subject, nick_name, photographer) values (?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
-    int addPhotography(String open_id, String url, String type, String subject, String nick_name, String photographer);
+    @Query(value = "insert into photography(open_id, url, type, subject, nick_name, photographer, tag) values (?1, ?2, ?3, ?4, ?5, ?6, ?7)", nativeQuery = true)
+    int addPhotography(String open_id, String url, String type, String subject, String nick_name, String photographer, String tag);
 }
