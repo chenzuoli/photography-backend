@@ -10,7 +10,7 @@
     </parent>
     <groupId>pet.photography</groupId>
     <artifactId>photography</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>photography</name>
     <description>Project for Photography</description>
 

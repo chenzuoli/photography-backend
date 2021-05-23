@@ -23,8 +23,8 @@ create table if not exists user(
 ) comment '用户表' default charset='utf8'
 ;
 
-alter table user add column tag_id varchar(200) default null  comment '标签' after token;
-alter table user add column community varchar(255) default null comment '小区' after token;
+alter table user add column tag_id varchar(200) default ""  comment '标签' after token;
+alter table user add column community varchar(255) default "" comment '小区' after token;
 
 
 INSERT INTO `petcage`.`user`(`id`, `phone`, `open_id`, `union_id`, `pwd`, `user_type`, `balance`, `valid_start_date`, `valid_end_date`, `token`, `country`, `province`, `city`, `avatar_url`, `gender`, `nick_name`, `language`, `birthday`, `create_time`, `update_time`) VALUES (1, NULL, 'ouHZt5bOQUAFi3C8rqDXC_dgCDvI', NULL, '3254316d-62a3-4298-962c-adc2f61204a7', '1', 0, '2020-03-30 00:01:32', '3000-12-31 00:00:00', '69992092-c017-4473-a52f-7c6ff7c24235', '', '', '', 'https://wx.qlogo.cn/mmopen/vi_32/VBoVXlHjV7ooww4icozNUQkohOp304JWEx7Qaeb97JvicMaibgwCbxiaYbceib1XIoT1yFWdOTeIYnzE45cibxp9aEtA/132', '1', '你好世界1124', 'en', NULL, '2020-03-30 00:01:32', NULL);
@@ -183,7 +183,7 @@ create table if not exists vote(
     primary key(competition_id, open_id)
 ) comment '作品投票表' default charset='utf8'
 ;
-alter table vote add column tag_id varchar(200) default null  comment '标签' after votes;
+alter table vote add column tag_id varchar(200) default ""  comment '标签' after votes;
 
 
 create table if not exists photography(

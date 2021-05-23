@@ -15,4 +15,7 @@ import java.util.List;
 public interface TagRepository extends JpaRepository<Tag, String> {
     @Query(value = "select * from tags", nativeQuery = true)
     List<Tag> getTags();
+
+    @Query(value = "select tag_name from tags where tag_id = ?1", nativeQuery = true)
+    String getTagById(String tag_id);
 }

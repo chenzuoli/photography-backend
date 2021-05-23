@@ -30,6 +30,8 @@ public class User {
     private String valid_start_date; // 会员有效开始日期
     private String valid_end_date; // 会员有效结束日期
     private String token; // 登录access_token
+    private String community; // 小区
+    private String tag_id;
     private String country; // 国别
     private String province; // 省份
     private String city; // 城市

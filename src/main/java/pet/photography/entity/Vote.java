@@ -32,6 +32,7 @@ public class Vote implements Serializable {
     private String subject;
     private String nick_name;
     private int votes;
+    private String tag_id;
     private String create_time;
     private String update_time;
 }

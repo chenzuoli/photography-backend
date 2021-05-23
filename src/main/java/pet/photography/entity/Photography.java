@@ -29,6 +29,7 @@ public class Photography {
     private String nick_name;
     private String photographer;
     private int votes;
+    private String tag_id;
     private String create_time;
     private String update_time;
 }
