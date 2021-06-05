@@ -47,4 +47,8 @@ public class VoteService {
     public List<Vote> checkVote(String competition_id, String open_id) {
         return voteRepository.checkVote(competition_id, open_id);
     }
+
+    public Vote getVoteById(int id) {
+        return voteRepository.getVoteById(id);
+    }
 }

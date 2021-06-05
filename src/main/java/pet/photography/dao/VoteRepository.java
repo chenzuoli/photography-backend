@@ -45,4 +45,7 @@ public interface VoteRepository extends JpaRepository<Vote, String> {
     @Query(value = "select * from vote where competition_id = ?1 and open_id = ?2", nativeQuery = true)
     List<Vote> checkVote(String competition_id, String open_id);
 
+    @Query(value = "select * from vote where id = ?1", nativeQuery = true)
+    Vote getVoteById(int id);
+
 }

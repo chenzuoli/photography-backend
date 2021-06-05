@@ -23,4 +23,8 @@ public class PhotographyService {
     public int addPhotography(String open_id, String url, String type, String subject, String nick_name, String photographer, String tag_id) {
         return photographyRepository.addPhotography(open_id, url, type, subject, nick_name, photographer, tag_id);
     }
+
+    public Photography getPhotographyById(int id) {
+        return photographyRepository.getPhotographyById(id);
+    }
 }

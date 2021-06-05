@@ -31,7 +31,8 @@ public class WebConfigurer implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login", "/wx_login", "/tt_login", "/login_app", "/register", "/register_app",
                         "/register_app_user", "/sms_code", "/open_id", "/tt_open_id", "/get_competitions",
-                        "/get_votes", "/get_photographies", "/get_comments", "/app");
+                        "/get_votes", "/get_photographies", "/get_comments", "/app", "/get_vote_by_id",
+                        "/get_photography_by_id");
 //        super.addInterceptors(registry);    //较新Spring Boot的版本中这里可以直接去掉，否则会报错
     }
 }

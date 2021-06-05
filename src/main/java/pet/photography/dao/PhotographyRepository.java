@@ -22,4 +22,7 @@ public interface PhotographyRepository extends JpaRepository<Photography, String
     @Modifying
     @Query(value = "insert into photography(open_id, url, type, subject, nick_name, photographer, tag_id) values (?1, ?2, ?3, ?4, ?5, ?6, ?7)", nativeQuery = true)
     int addPhotography(String open_id, String url, String type, String subject, String nick_name, String photographer, String tag_id);
+
+    @Query(value = "select * from photography where id = ?1", nativeQuery = true)
+    Photography getPhotographyById(int id);
 }

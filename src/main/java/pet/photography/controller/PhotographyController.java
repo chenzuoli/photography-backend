@@ -37,4 +37,10 @@ public class PhotographyController {
         int result = photographyService.addPhotography(open_id, url, type, subject, nick_name, photographer, tag_id);
         return result > 0 ? ResultDTO.ok("添加成功") : ResultDTO.fail("添加失败");
     }
+
+    @RequestMapping(value = "/get_photography_by_id", method = RequestMethod.GET)
+    public ResultDTO getPhotographyById(@RequestParam("id") int id) {
+        Photography photography = photographyService.getPhotographyById(id);
+        return photography != null ? ResultDTO.ok(photography) : ResultDTO.fail("查询无结果");
+    }
 }

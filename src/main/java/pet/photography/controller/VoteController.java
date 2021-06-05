@@ -79,6 +79,5 @@ public class VoteController {
         List<Vote> votes = voteService.checkVote(competition_id, open_id);
         return votes.size() == 0 ? ResultDTO.ok("未参赛") : ResultDTO.fail("对不起，您已参赛。");
     }
-
     
 }
