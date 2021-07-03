@@ -1,0 +1,36 @@
+body{
+    background-color: #619ac3;
+}
+.picture {
+    width: 100%;
+    background-size: cover;
+}
+.c1{
+    width: 200px;
+    height: 200px;
+    border: 3px solid white;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 20px;
+    float: left;
+}
+img{
+    width: 100%;
+}
+.div_pet_info{
+    float: left;
+    width: 40%;
+    height: 100px;
+    margin-left: 10px;
+    line-height: 100px;
+    display: inline;
+}
+.subject {
+    margin: 10px;
+    margin-left: 260px;
+    margin-top: 210px;
+    float: none;
+    display: block;
+    height: 100px;
+    line-height: 100px;
+}

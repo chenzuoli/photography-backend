@@ -20,6 +20,8 @@ public class WebConfigurer implements WebMvcConfigurer {
     // 这个方法是用来配置静态资源的，比如html，js，css，等等
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/templates/**").addResourceLocations("classpath:/templates/");
     }
 
     // 这个方法用来注册拦截器，我们自己写好的拦截器需要通过这里添加注册才能生效
@@ -32,7 +34,8 @@ public class WebConfigurer implements WebMvcConfigurer {
                 .excludePathPatterns("/login", "/wx_login", "/tt_login", "/login_app", "/register", "/register_app",
                         "/register_app_user", "/sms_code", "/open_id", "/tt_open_id", "/get_competitions",
                         "/get_votes", "/get_photographies", "/get_comments", "/app", "/get_vote_by_id",
-                        "/get_photography_by_id", "/get_user_by_open_id");
+                        "/get_photography_by_id", "/get_user_by_open_id", "/moment", "/miniprogram/next_door_moment.html",
+                        "/get_moments", "/moments.html");
 //        super.addInterceptors(registry);    //较新Spring Boot的版本中这里可以直接去掉，否则会报错
     }
 }

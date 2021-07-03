@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+	$(function(){
+		$("#s").click(function(){
+			var ins=$("#ins").val();
+			$.ajax({
+  	  			url:"/r",//要请求的服务器url
+  	  			data:{ins:ins},//第一个name对应的是后端request.getParameter("name")的name、第二个name对应的是此js中的var name = $("#name").val();的name
+  	  			async:true,//是否是异步请求
+  	  			cache:false,//是否缓存结果
+  	  			type:"POST",//请求方式
+  	  			dataType:"text",//服务器返回什么类型数据 text xml javascript json(javascript对象)
+  	  			success:function(result){//函数会在服务器执行成功后执行，result就是服务器返回结果
+  	  				console.log(result);
+  	  				$("#re").html(result);
+  	  			},
+  	  			error:function(jqXHR, textStatus, errorThrown) {
+
+  	  	    	}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+    <h1>我是html页面</h1>
+    <input type="text" id="ins" />
+    <button id="s">发起ajax：id为${photography}</button>
+    <span id="re"></span>
+    <span th:text="${photography}">abc</span>
+</body>
+</html>
