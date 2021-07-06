@@ -35,7 +35,7 @@ public class WebConfigurer implements WebMvcConfigurer {
                         "/register_app_user", "/sms_code", "/open_id", "/tt_open_id", "/get_competitions",
                         "/get_votes", "/get_photographies", "/get_comments", "/app", "/get_vote_by_id",
                         "/get_photography_by_id", "/get_user_by_open_id", "/moment", "/miniprogram/next_door_moment.html",
-                        "/get_moments", "/moments.html");
+                        "/get_moments", "/moments.html", "/competition_work", "/competition_work.html");
 //        super.addInterceptors(registry);    //较新Spring Boot的版本中这里可以直接去掉，否则会报错
     }
 }

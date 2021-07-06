@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pet.photography.entity.Competition;
 import pet.photography.entity.Photography;
+import pet.photography.entity.Vote;
+import pet.photography.service.CompetitionService;
 import pet.photography.service.PhotographyService;
+import pet.photography.service.VoteService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,6 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 public class WebsiteController {
     @Autowired
     PhotographyService photographyService;
+    @Autowired
+    VoteService voteService;
 
     public String nextDoorApp() {
         return "next_door_app";
@@ -38,11 +44,18 @@ public class WebsiteController {
     // return的string前面不能加/
     // GetMapping相当于RequestMapping Get请求
     @GetMapping("get_moments")
-    String test(@RequestParam("id") int id, HttpServletRequest request) {
+    String getMoments(@RequestParam("id") int id, HttpServletRequest request) {
         //逻辑处理
         Photography photography = photographyService.getPhotographyById(id);
         request.setAttribute("photography", photography);
         return "moments";
+    }
+
+    @GetMapping("competition_work")
+    String getCompetitionWork(@RequestParam("id") int id, HttpServletRequest request) {
+        Vote vote = voteService.getVote(id);
+        request.setAttribute("competition_work", vote);
+        return "competition_work";
     }
 
 
